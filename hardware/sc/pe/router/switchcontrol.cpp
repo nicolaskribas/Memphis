@@ -54,11 +54,11 @@ void switch_control::controle_comb(){
 				PE.write(S4);
 			}
 			else{
-				if(lx_local!=tx_local && free[dirx.read()].read()==1){
+				if(((lx_local < tx_local && ly_local <= ty_local) || lx_local > tx_local) && free[dirx.read()].read()==1){
 					PE.write(S5);
 				}
 				else{
-					if( lx_local == tx_local && ly_local != ty_local && free[diry.read()].read()==1){
+					if(((ly_local < ty_local && lx_local <= tx_local) || ly_local > ty_local) && free[diry.read()].read()==1){
 						PE.write(S6);
 					}
 					else{
